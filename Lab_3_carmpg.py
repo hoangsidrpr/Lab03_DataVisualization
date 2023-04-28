@@ -5,7 +5,7 @@ Created on Tue Jan 27 21:53:34 2015
 @author: nymph
 """
 
-
+#%%
 #################################### Read the data ############################
 import pandas as pd
 from pandas import DataFrame, Series
@@ -28,3 +28,5 @@ data = pd.read_csv("http://archive.ics.uci.edu/ml/machine-learning-databases/aut
 print(data.shape)
 
 ################################## Enter your code below ######################
+#%% <- them cai nay vao de chay interactive python giong nhu ipynb cho de code (vscode)
+# https://code.visualstudio.com/docs/python/jupyter-support-py
