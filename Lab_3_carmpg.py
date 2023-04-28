@@ -69,3 +69,7 @@ def q9_plot():
 q9_plot()
 
 # %%
+#%% <- them cai nay vao de chay interactive python giong nhu ipynb cho de code (vscode)
+# https://code.visualstudio.com/docs/python/jupyter-support-py
+
+# %%
