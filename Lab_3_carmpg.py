@@ -30,6 +30,34 @@ print(data.shape)
 
 ################################## Enter your code below ######################
 
+################################## Q6 ######################
+def q6_plot():
+    plt.scatter(data.model, data.cylinders + np.random.random(len(data['cylinders'])))
+    plt.xlabel('Model')
+    plt.ylabel('Cylinders')
+    plt.title('Scatter of Model and Cylinders')
+    plt.savefig('q6.png', bbox_inches='tight')
+    plt.show()
+q6_plot()
+
+################################## Q7 ######################
+def q7_plot1():
+    plt.scatter(data.displacement, data.mpg);
+    plt.ylabel('MPG')
+    plt.xlabel('Displacement')
+    plt.title('Scatter of MPG and Displacement')
+    plt.savefig('q7_1.png', bbox_inches='tight')
+    plt.show()
+q7_plot1()
+
+def q7_plot2():
+    plt.scatter(data.horsepower, data.mpg);
+    plt.ylabel('MPG')
+    plt.xlabel('Horsepower')
+    plt.title('Scatter of MPG and Horsepower')
+    plt.savefig('q7_2.png', bbox_inches='tight')
+    plt.show()
+q7_plot2()
 
 ################################## Q8 #########################################
 data_ = data.copy()
