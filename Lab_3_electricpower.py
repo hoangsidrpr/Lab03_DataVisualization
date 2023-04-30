@@ -27,7 +27,7 @@ data['Global_reactive_power'] = data['Global_reactive_power'].astype(float)
 data['DateTime'] =\
     data['Date'].astype(str) + ' ' + data['Time'].astype(str)
 data['DateTime'] = pd.to_datetime(
-    data['DateTime'], format='%Y/%m/%d %H:%M:%S')
+    data['DateTime'], format='%Y-%m-%d %H:%M:%S')
 
 ############################ Complete the following 4 functions ###############
 
@@ -48,7 +48,7 @@ def plot1():
     ax.spines['top'].set_visible(False)
 
     plt.tight_layout()
-    plt.savefig('plot1.png', bbox_inches='tight')
+    plt.savefig('plot1.png', bbox_inches='tight', dpi=300)
     plt.show()
 
 
@@ -57,7 +57,7 @@ plot1()
 # %%
 
 
-def plot2(ax=plt.figure(), save=False):
+def plot2(save=False):
     data[['Global_active_power', 'DateTime']].plot(
         x='DateTime', y='Global_active_power',
         color='black', linewidth=0.5)
@@ -66,7 +66,7 @@ def plot2(ax=plt.figure(), save=False):
     plt.legend().set_visible(False)
 
     if save:
-        plt.savefig('plot2.png', bbox_inches='tight')
+        plt.savefig('plot2.png', bbox_inches='tight', dpi=300)
 
 
 plot2(save=True)
@@ -74,7 +74,7 @@ plot2(save=True)
 # %%
 
 
-def plot3(ax=plt.figure(), save=False):
+def plot3(save=False):
     data[['Sub_metering_1', 'Sub_metering_2', 'Sub_metering_3', 'DateTime']].plot(
         x='DateTime', y=['Sub_metering_1', 'Sub_metering_2', 'Sub_metering_3'],
         color=['black', 'red', 'blue'], linewidth=0.5)
@@ -82,7 +82,7 @@ def plot3(ax=plt.figure(), save=False):
     plt.tight_layout()
 
     if save:
-        plt.savefig('plot3.png', bbox_inches='tight')
+        plt.savefig('plot3.png', bbox_inches='tight', dpi=300)
 
 
 plot3(save=True)
@@ -124,15 +124,19 @@ def plot4(save=False):
 
     plot('Global_active_power', axs[0, 0],
          ytitle='Global Active Power (kilowatts)')
+    
     plot('Voltage', axs[0, 1])
+    
     plot('Sub_metering_1', axs[1, 0])
     plot('Sub_metering_2', axs[1, 0], 'red')
     plot('Sub_metering_3', axs[1, 0], 'blue', ytitle='Energy sub metering')
+    axs[1, 0].legend(['Sub_metering_1', 'Sub_metering_2', 'Sub_metering_3'])
+
     plot('Global_reactive_power', axs[1, 1])
 
     fig.subplots_adjust(hspace=0.3, wspace=0.3)
     if save:
-        fig.savefig('plot4.png', bbox_inches='tight')
+        fig.savefig('plot4.png', bbox_inches='tight', dpi=500)
 
     plt.show()
 
