@@ -29,36 +29,76 @@ data.iloc[0, :]
 print(data.shape)
 
 ################################## Enter your code below ######################
+# %%
+# Q1 ---
 
+# %%
+# Q2 ---
+
+# %%
+# Q3 ---
+
+# %%
+# Q4 
+
+
+def q4_plot():
+    data.hist(bins=12, figsize=(15, 6), layout=(2, 4),
+              linewidth=1.2, edgecolor='white')
+    plt.tight_layout()
+    plt.savefig('q4.png', bbox_inches='tight', dpi=500)
+    plt.show()
+
+
+q4_plot()
+
+# %%
+# Q5
+
+# %%
 ################################## Q6 ######################
+
+
 def q6_plot():
-    plt.scatter(data.model, data.cylinders + np.random.random(len(data['cylinders'])))
+    plt.scatter(data.model, data.cylinders +
+                np.random.random(len(data['cylinders'])))
     plt.xlabel('Model')
     plt.ylabel('Cylinders')
     plt.title('Scatter of Model and Cylinders')
-    plt.savefig('q6.png', bbox_inches='tight')
+    plt.savefig('q6.png', bbox_inches='tight', dpi=300)
     plt.show()
+
+
 q6_plot()
 
+# %%
 ################################## Q7 ######################
+
+
 def q7_plot1():
-    plt.scatter(data.displacement, data.mpg);
+    plt.scatter(data.displacement, data.mpg)
     plt.ylabel('MPG')
     plt.xlabel('Displacement')
     plt.title('Scatter of MPG and Displacement')
-    plt.savefig('q7_1.png', bbox_inches='tight')
+    plt.savefig('q7_1.png', bbox_inches='tight', dpi=300)
     plt.show()
+
+
 q7_plot1()
 
+
 def q7_plot2():
-    plt.scatter(data.horsepower, data.mpg);
+    plt.scatter(data.horsepower, data.mpg)
     plt.ylabel('MPG')
     plt.xlabel('Horsepower')
     plt.title('Scatter of MPG and Horsepower')
-    plt.savefig('q7_2.png', bbox_inches='tight')
+    plt.savefig('q7_2.png', bbox_inches='tight', dpi=300)
     plt.show()
+
+
 q7_plot2()
 
+# %%
 ################################## Q8 #########################################
 data_ = data.copy()
 data_['type_car'] = data_.car_name.str.split().str.get(0)
@@ -79,12 +119,13 @@ def q8_plot():
 
     ''' Save figure '''
     plt.tight_layout()
-    plt.savefig('q8.png', bbox_inches='tight')
+    plt.savefig('q8.png', bbox_inches='tight', dpi=500)
     plt.show()
 
 
 q8_plot()
 
+# %%
 ################################## Q9 #########################################
 q9_data = data.iloc[:, :8].corr()
 
@@ -96,23 +137,12 @@ def q9_plot():
 
     ''' Save figure '''
     # plt.tight_layout()
-    plt.savefig('q9.png', bbox_inches='tight')
+    plt.xticks(rotation=45)
+    plt.savefig('q9.png', bbox_inches='tight', dpi=500)
     plt.show()
 
 
 q9_plot()
-
-# %%
-# Q4
-
-def q4_plot():
-    data.hist(bins=12, figsize=(15, 6), layout=(2, 4))
-    plt.tight_layout()
-    plt.savefig('q4.png', bbox_inches='tight')
-    plt.show()
-
-
-q4_plot()
 
 # %% <- them cai nay vao de chay interactive python giong nhu ipynb cho de code (vscode)
 # https://code.visualstudio.com/docs/python/jupyter-support-py
