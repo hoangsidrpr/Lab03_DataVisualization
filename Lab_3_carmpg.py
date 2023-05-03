@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Tue Jan 27 21:53:34 2015
-
 @author: nymph
 """
 
@@ -37,7 +36,12 @@ print(data.shape)
 
 # %%
 # Q3 ---
+print(data.isna().sum())
+print(data.describe())
 
+data['mpg'].fillna(int(data['mpg'].mean()), inplace=True)
+data['horsepower'].fillna(int(data['horsepower'].mean()), inplace=True)
+print(data.isna().sum())
 # %%
 # Q4 
 
@@ -54,7 +58,37 @@ q4_plot()
 
 # %%
 # Q5
+def q5_plot():
+    fig_obj = plt.figure(figsize=(10, 7.5))
+    ax = plt.subplot(111)
 
+    p = plt.plot(data.mpg, data.weight, 'r.')
+    plt.ylabel('Weight')
+    plt.xlabel('MPG')
+    plt.title('Scatter of MPG and Weight')
+    plt.savefig('q5.png',bbox_inches='tight',dpi=300)
+    plt.show()
+
+q5_plot()
+
+def correlation(x, y):
+    mean_x = sum(x)/float(len(x))
+    mean_y = sum(y)/float(len(y))
+    
+    sub_x = [i-mean_x for i in x]
+    sub_y = [i-mean_y for i in y]
+    
+    numerator = sum([sub_x[i]*sub_y[i] for i in range(len(sub_x))])
+    
+    std_deviation_x = sum([sub_x[i]**2.0 for i in range(len(sub_x))])
+    std_deviation_y = sum([sub_y[i]**2.0 for i in range(len(sub_y))])
+    # squaring by 0.5 to find the square root
+    denominator = (std_deviation_x*std_deviation_y)**0.5
+    
+    cor = numerator/denominator
+    return cor
+
+print("He so tuong quan cua MPG va Weight: {}".format(correlation(data.mpg, data.weight)))
 # %%
 ################################## Q6 ######################
 
