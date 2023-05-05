@@ -47,7 +47,7 @@ print(data.isna().sum())
 
 
 def q4_plot():
-    data.hist(bins=12, figsize=(15, 6), layout=(2, 4),
+    data.hist(bins=13, figsize=(15, 6), layout=(2, 4),
               linewidth=1.2, edgecolor='white')
     plt.tight_layout()
     plt.savefig('q4.png', bbox_inches='tight', dpi=500)
