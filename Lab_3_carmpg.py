@@ -8,7 +8,6 @@ Created on Tue Jan 27 21:53:34 2015
 #################################### Read the data ############################
 import pandas as pd
 from pandas import DataFrame, Series
-import seaborn as sns
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -136,10 +135,12 @@ print("He so tuong quan cua MPG va Weight: {}".format(correlation(data.mpg, data
 # %%
 ################################## Q6 ######################
 
-
+# random seed
+np.random.seed(1234)
 def q6_plot():
     plt.scatter(data.model, data.cylinders +
                 np.random.random(len(data['cylinders'])))
+    # plt.grid()
     plt.xlabel('Model')
     plt.ylabel('Cylinders')
     plt.title('Scatter of Model and Cylinders')
@@ -155,6 +156,7 @@ q6_plot()
 
 def q7_plot1():
     plt.scatter(data.displacement, data.mpg)
+    # plt.grid()
     plt.ylabel('MPG')
     plt.xlabel('Displacement')
     plt.title('Scatter of MPG and Displacement')
@@ -167,6 +169,7 @@ q7_plot1()
 
 def q7_plot2():
     plt.scatter(data.horsepower, data.mpg)
+    # plt.grid()
     plt.ylabel('MPG')
     plt.xlabel('Horsepower')
     plt.title('Scatter of MPG and Horsepower')
