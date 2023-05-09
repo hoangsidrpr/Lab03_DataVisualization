@@ -8,6 +8,7 @@ Created on Tue Jan 27 21:53:34 2015
 #################################### Read the data ############################
 import pandas as pd
 from pandas import DataFrame, Series
+import seaborn as sns
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -29,18 +30,62 @@ print(data.shape)
 ################################## Enter your code below ######################
 # %%
 # Q1 ---
-
+print ("-----Thông tin dataset-----")
+print(data.info())
+print ("")
 # %%
 # Q2 ---
+new = data["car_name"].str.split(" ", n = 1, expand = True)
+data["company"] = new[0]
+new1 =  data["company"].str.split("-", n = 1, expand = True)
+data["company"] = new1[0]
 
+data["company"] = data["company"].replace('chevroelt', 'chevrolet' )
+data["company"] = data["company"].replace('chevy', 'chevrolet' )
+data["company"] = data["company"].replace('vw', 'volkswagen' )
+data["company"] = data["company"].replace('vokswagen', 'volkswagen' )
+data["company"] = data["company"].replace('toyouta', 'toyota' )
+data["company"] = data["company"].replace('maxda', 'mazda' )
+data["company"] = data["company"].replace('capri', 'ford' )
+
+#Name & the number of distinct car companies
+print ("-----Name & the number of distinct car companies-----")
+print(data["company"].unique())
+print("Total:", data["company"].nunique())
+print("")
+
+# The car with the best mpg
+best_mpg = data.loc[data['mpg'] == data['mpg'].max()]
+print ("-----The car with the best mpg-----")
+print (best_mpg)  
+print("")
+
+# The number of 8-cylinder cars made by each company
+cylinder_8 = data.loc[data['cylinders'] == 8]
+val_counts = cylinder_8['company'].value_counts()
+print ("-----The number of 8-cylinder cars made by each company-----")
+print (val_counts)
+print ("")
+
+# 3-cylinder cars
+cylinder_3 = data.loc[data['cylinders'] == 3]
+print ("3-cylinder cars: ")
+print (cylinder_3)
+print ("")
 # %%
 # Q3 ---
+print ("----Missing value ban đầu-----")
 print(data.isna().sum())
+print("")
+print ("-----Bảng thống kê các giá trị cơ bản------")
 print(data.describe())
+print ("")
 
 data['mpg'].fillna(int(data['mpg'].mean()), inplace=True)
 data['horsepower'].fillna(int(data['horsepower'].mean()), inplace=True)
+print ("----Missing value sau khi xử lý-----")
 print(data.isna().sum())
+print("")
 # %%
 # Q4 
 
@@ -170,7 +215,6 @@ def q9_plot():
     ''' Create a canvas with width 10, height 7.5 '''
     fig_obj = plt.figure(figsize=(10, 7.5))
     plt.imshow(q9_data,cmap ="coolwarm")
-
     ''' Save figure '''
     # plt.tight_layout()
     plt.title('Correlation heatmap')
