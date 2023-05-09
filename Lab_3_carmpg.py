@@ -29,7 +29,7 @@ print(data.shape)
 ################################## Enter your code below ######################
 # %%
 # Q1 ---
-print ("-----Thông tin dataset-----")
+print ("-----Thong tin dataset-----")
 print(data.info())
 print ("")
 # %%
@@ -73,16 +73,16 @@ print (cylinder_3)
 print ("")
 # %%
 # Q3 ---
-print ("----Missing value ban đầu-----")
+print ("----Missing value ban dau-----")
 print(data.isna().sum())
 print("")
-print ("-----Bảng thống kê các giá trị cơ bản------")
+print ("-----Bang thong ke cac gia tri co ban------")
 print(data.describe())
 print ("")
 
 data['mpg'].fillna(int(data['mpg'].mean()), inplace=True)
 data['horsepower'].fillna(int(data['horsepower'].mean()), inplace=True)
-print ("----Missing value sau khi xử lý-----")
+print ("----Missing value sau khi xu ly-----")
 print(data.isna().sum())
 print("")
 # %%
