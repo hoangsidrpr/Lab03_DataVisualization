@@ -139,13 +139,15 @@ data_['type_car'] = data_.car_name.str.split().str.get(0)
 q8 = data_.groupby(['model'])
 q8_data = q8['type_car'].count()
 
-
 def q8_plot():
     ''' Create a canvas with width 10, height 7.5 '''
     fig_obj = plt.figure(figsize=(10, 7.5))
-    sns.set_style("whitegrid")
-    sns.lineplot(data=q8_data, legend='auto', color='orange', marker='o').set(
-        title='A number of new cars introduced each year', xlabel='model', ylabel='count')
+
+    plt.plot(q8_data.keys(),q8_data,color = 'orange', marker='o') 
+    
+    plt.title('A number of new cars introduced each year') 
+    plt.xlabel('model') 
+    plt.ylabel('count')
 
     ax = plt.subplot(111)
     ax.spines['right'].set_visible(False)
@@ -162,16 +164,25 @@ q8_plot()
 # %%
 ################################## Q9 #########################################
 q9_data = data.iloc[:, :8].corr()
-
+idx = q9_data.index
+cols = q9_data.columns
 
 def q9_plot():
     ''' Create a canvas with width 10, height 7.5 '''
     fig_obj = plt.figure(figsize=(10, 7.5))
-    sns.heatmap(q9_data, annot=True)
-
+    plt.imshow(q9_data,cmap ="coolwarm")
     ''' Save figure '''
     # plt.tight_layout()
-    plt.xticks(rotation=45)
+    plt.title('Correlation heatmap')
+    plt.xticks(range(len(cols)),cols,rotation=45)
+    plt.yticks(range(len(idx)),idx)
+    for y in range(q9_data.shape[0]):
+        for x in range(q9_data.shape[1]):
+            plt.text(x, y, '%.2f' % q9_data.iloc[y, x],
+                 horizontalalignment='center',
+                 verticalalignment='center',
+                 )
+            
     plt.savefig('q9.png', bbox_inches='tight', dpi=500)
     plt.show()
 
