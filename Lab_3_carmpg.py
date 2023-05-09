@@ -8,7 +8,6 @@ Created on Tue Jan 27 21:53:34 2015
 #################################### Read the data ############################
 import pandas as pd
 from pandas import DataFrame, Series
-import seaborn as sns
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -171,6 +170,7 @@ def q9_plot():
     ''' Create a canvas with width 10, height 7.5 '''
     fig_obj = plt.figure(figsize=(10, 7.5))
     plt.imshow(q9_data,cmap ="coolwarm")
+
     ''' Save figure '''
     # plt.tight_layout()
     plt.title('Correlation heatmap')
